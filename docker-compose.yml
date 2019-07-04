@@ -27,7 +27,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:rw
-      - ./scheduled-reporting-demo-report:/scheduled-reporting-demo-report:rw
+      - ./demo-report:/demo-report:rw
       - ./example_data:/home/rundeck/server/data:rw
     networks:
       - rundeck
