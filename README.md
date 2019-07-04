@@ -25,4 +25,7 @@ Password: admin
 ```
 Next, click on **Example Project** and go to **JOBS** section.  
 Click on the "play" button next to "Generate Time Report" and run your job by clicking the green button.  
-The example report will be saved in /tmp/reports/report[timestamp].html
+The example report will be saved in 
+```
+/tmp/reports/report[timestamp].html
+```
