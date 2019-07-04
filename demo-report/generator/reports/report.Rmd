@@ -1,0 +1,19 @@
+---
+title: "Report"
+output: 
+    oaStyle::html_report
+---
+
+# Plot
+
+```{r plot1, echo=FALSE, message=FALSE, warning=FALSE}
+
+time <- format(Sys.time(), "%a %b %d %X %Y")
+
+plot(x = 1:5, y = 1:5, col = c("red", "red", "red", "blue", "blue"), pch=19)
+
+```
+
+## Time
+
+Current time: `r time`

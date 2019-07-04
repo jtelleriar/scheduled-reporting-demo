@@ -1,0 +1,5 @@
+library(oaStyle)
+library(rmarkdown)
+time <- as.integer(as.POSIXct(Sys.time()))
+#render(paste("./reports/report", time, ".pdf", sep=""))
+render("../reports/report.Rmd")

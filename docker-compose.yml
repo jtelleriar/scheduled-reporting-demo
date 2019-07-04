@@ -1,0 +1,38 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:latest
+    hostname: nginx
+    restart: unless-stopped
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./rundeck:/etc/nginx/sites-enabled/rundeck:ro
+    ports:
+      - 80:80
+    depends_on:
+      - rundeck
+    networks:
+      - rundeck
+  rundeck:
+          # image: rundeck/rundeck:3.0.23
+    build: .
+    image: rundeck_with_docker:latest
+    hostname: rundeck
+    restart: unless-stopped
+    environment:
+      - RUNDECK_GRAILS_URL=http://localhost:80/rundeck
+      - RUNDECK_SERVER_FORWARDED=true
+      - RUNDECK_SERVER_CONTEXTPATH=/rundeck
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:rw
+      - ./scheduled-reporting-demo-report:/scheduled-reporting-demo-report:rw
+      - ./example_data:/home/rundeck/server/data:rw
+    networks:
+      - rundeck
+networks:
+  rundeck:
+    ipam:
+      config:
+      - subnet: 192.168.39.0/24
