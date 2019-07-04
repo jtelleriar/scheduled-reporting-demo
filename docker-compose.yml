@@ -17,7 +17,7 @@ services:
   rundeck:
           # image: rundeck/rundeck:3.0.23
     build: .
-    image: openanalytics/scheduled-reporting-demo-report:latest
+    image: openanalytics/scheduled-reporting-demo:latest
     hostname: rundeck
     restart: unless-stopped
     environment:
